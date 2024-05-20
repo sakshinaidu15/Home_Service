@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Home Service Management System</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center user_header">
+        <div class="container d-flex align-items-center">
+            <h1 class="logo me-auto"><a href="/user">Home Service</a></h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html" class="logo me-auto"><img src="{% static 'img/logo.png' %}" alt=""></a>-->
+
+            <nav id="navbar" class="navbar order-last order-lg-0">
+                <ul>
+                    <li><a class="nav-link scrollto active" href="services.html">Service</a></li>
+                    <li><a class="nav-link scrollto" href="/myorder">MyOrders</a></li>
+                    <li><a class="nav-link scrollto" href="/signout">Logout</a></li>
+                </ul>
+            </nav>
+            <!-- navbar -->
+
+            <a href="/myprofile" class="get-started-btn scrollto">My Profile</a>
+        </div>
+    </header>
+    <!-- End Header -->
+    
+    <section class="service_section">
+        <div class="container">
+            
+            <div class=" row">
+                {%for i in services%}
+                <div class="col-md-4 mt-3">
+                    
+                    <div class="card service_card">
+                        <div class="card-body">
+                            <img src="media/{{i.service_img}}" alt="" height="auto" width="100%">
+                            <h4 class="pt-3">{{i.service_name}}</h4>
+                            <p class="text-justify">{{i.service_diss}}</p>
+                            <a href="{%url 'bookNow' i.id%}" class="btn btn-book">Book Now</a>
+                        </div>
+                       
+                        
+                    </div>
+                    
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+    </section>
+   
+    
+</body>
+
+</html>
